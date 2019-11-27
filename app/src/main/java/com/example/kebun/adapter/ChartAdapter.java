@@ -26,7 +26,7 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
     @NonNull
     @Override
     public ChartAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View view = inflater.inflate(R.layout.chart, viewGroup, false);
         ChartAdapter.ViewHolder holder = new ChartAdapter.ViewHolder(view);
         return holder;
@@ -43,24 +43,23 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView tvType, tvPrice, tvS, tvM, tvL, tvXL, tvQty, tvTotal;
+        TextView tvType, tvPrice, tvSize, tvQty, tvTotal;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             tvType = itemView.findViewById(R.id.type);
             tvPrice = itemView.findViewById(R.id.price);
             tvQty = itemView.findViewById(R.id.qty);
+            tvSize = itemView.findViewById(R.id.size);
+            tvTotal = itemView.findViewById(R.id.total);
         }
-        public void bind(int i){
+        public void bind(final int i){
             final Chart chart = chartList.get(i);
             tvType.setText(chartList.get(i).getType());
             tvPrice.setText(chartList.get(i).getHarga());
-            tvS.setText(chartList.get(i).getSize());
-            tvM.setText(chartList.get(i).getSize());
-            tvL.setText(chartList.get(i).getSize());
-            tvXL.setText(chartList.get(i).getSize());
             tvQty.setText(chartList.get(i).getQty());
-
+            tvSize.setText(chartList.get(i).getSize());
+            tvTotal.setText(chartList.get(i).getTotal());
         }
     }
 }

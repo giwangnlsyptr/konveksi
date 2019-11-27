@@ -8,7 +8,10 @@ import android.support.annotation.NonNull;
 @Entity(tableName = "chart_db")
 public class Chart {
     @NonNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    private int id;
+
     @ColumnInfo(name = "type")
     private String type;
 
@@ -16,10 +19,13 @@ public class Chart {
     private String size;
 
     @ColumnInfo(name = "qty")
-    private int qty;
+    private String qty;
 
     @ColumnInfo(name = "harga")
-    private int harga;
+    private String harga;
+
+    @ColumnInfo(name = "total")
+    private int total;
 
     @NonNull
     public String getType() {
@@ -38,20 +44,40 @@ public class Chart {
         this.size = size;
     }
 
-    public int getQty() {
-        return qty;
-    }
 
-    public void setQty(int qty) {
-        this.qty = qty;
-    }
 
-    public int getHarga() {
+
+
+
+    public String getHarga() {
         return harga;
     }
 
-    public void setHarga(int harga) {
+    public void setHarga(String harga) {
         this.harga = harga;
     }
 
+    public String getQty() {
+        return qty;
+    }
+
+    public void setQty(String qty) {
+        this.qty = qty;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 }

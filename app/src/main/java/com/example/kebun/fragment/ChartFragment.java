@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.kebun.R;
 import com.example.kebun.adapter.ChartAdapter;
+import com.example.kebun.adapter.KaosAdapter;
 import com.example.kebun.database.AppDatabase;
 
 import java.util.List;
@@ -44,15 +45,15 @@ public class ChartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.chart_list);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        //appDatabase = AppDatabase.iniDb(getContext());
-        //readData(appDatabase);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        appDatabase = AppDatabase.iniDb(getContext());
+        readData(appDatabase);
     }
     public void readData(AppDatabase appDatabase){
-        //List list;
-        //list = appDatabase.dao().getData();
-        //chartAdapter = new ChartAdapter(context, list);
-        //recyclerView.setAdapter(chartAdapter);
+        List list;
+        list = appDatabase.dao().getData();
+        chartAdapter = new ChartAdapter(context, list);
+        recyclerView.setAdapter(chartAdapter);
 
     }
 }

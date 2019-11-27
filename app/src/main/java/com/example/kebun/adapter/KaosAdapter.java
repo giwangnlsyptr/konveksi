@@ -10,10 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.kebun.R;
 import com.example.kebun.database.AppDatabase;
@@ -55,8 +52,6 @@ public class KaosAdapter extends RecyclerView.Adapter<KaosAdapter.ViewHolder> {
         TextView tvType, tvHarga;
         ImageView ivImage;
         EditText etSize, etQty;
-        RadioButton rS, rM, rL, rXL;
-        RadioGroup rgSize;
         Button bAdd;
 
         public ViewHolder(@NonNull View itemView) {
@@ -70,7 +65,7 @@ public class KaosAdapter extends RecyclerView.Adapter<KaosAdapter.ViewHolder> {
             appDatabase = AppDatabase.iniDb(context);
         }
 
-        public void bind(int i) {
+        public void bind(final int i) {
             ivImage.setImageResource(kaosModelList.get(i).getImage());
             tvType.setText(kaosModelList.get(i).getType());
             tvHarga.setText(kaosModelList.get(i).getHarga());
@@ -78,10 +73,11 @@ public class KaosAdapter extends RecyclerView.Adapter<KaosAdapter.ViewHolder> {
             bAdd.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     final Chart chart = new Chart();
-                    chart.setType(chart.getType());
-                    chart.setHarga(chart.getHarga());
-                    chart.setQty(chart.getQty());
-                    chart.setSize(chart.getSize());
+                    chart.setType(kaosModelList.get(i).getType());
+                    chart.setHarga(kaosModelList.get(i).getHarga());
+                    chart.setQty(etQty.getText().toString());
+                    chart.setSize(etSize.getText().toString());
+                    chart.setTotal(Integer.parseInt(etQty.getText().toString())* Integer.parseInt(kaosModelList.get(i).getHarga()));
                     new InsertData(appDatabase, chart).execute();
                 }
             });

@@ -23,15 +23,12 @@ public class KaosPresenter {
         KaosModel playlist;
         playlist = new KaosModel("Kaos Putih", "70000", R.drawable.putih);
         kaosModels.add(playlist);
-        playlist = new KaosModel("Kaos Pink", "75000", R.drawable.pink);
+        playlist = new KaosModel("Kaos Hitam", "75000", R.drawable.hitam);
         kaosModels.add(playlist);
         playlist = new KaosModel("Kaos Pink", "65000", R.drawable.pink);
         kaosModels.add(playlist);
-        playlist = new KaosModel("Kaos Stripe", "70000", R.drawable.putih);
+        playlist = new KaosModel("Kaos Stripe", "70000", R.drawable.stripe);
         kaosModels.add(playlist);
-        playlist = new KaosModel("Kaos Polos", "75000", R.drawable.images);
-        kaosModels.add(playlist);
-        playlist = new KaosModel("Kaos Pink", "65000", R.drawable.pink);
 
         view.onSuccess(kaosModels);
     }
